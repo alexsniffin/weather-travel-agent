@@ -34,19 +34,19 @@ class Settings(BaseSettings):
     )
 
     max_stops: int = Field(
-        default=8,
+        default=30,
         description="Maximum number of stops to include in the itinerary",
         alias="MAX_STOPS",
         ge=1,
-        le=20,
+        le=50,
     )
 
-    sample_every_nth: int = Field(
-        default=10,
-        description="Sample every Nth point from the start to end of the path.",
+    sample_km_interval: int = Field(
+        default=5,
+        description="Fix distance sampling based on km.",
         alias="SAMPLE_EVERY_KM",
         gt=0,
-        le=500,
+        le=50,
     )
 
     mock_weather: bool = False

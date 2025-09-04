@@ -24,6 +24,7 @@ dependencies = [
     "langchain-openai",
     "a2a-sdk[http-server,telemetry]>=0.3.4",
     "langchain-core>=0.3.75",
+    "geopy>=2.4.1",
 ]
 
 [project.optional-dependencies]
