@@ -1,16 +1,18 @@
 # Weather Travel Agent
 
-A GenAI Agent that provides weather-based travel recommendations along a route.
+A generative AI Agent that provides travel recommendations and weather forecast along a route.
 
 ## Features
 
-- Get weather forecasts for travel destinations
-- Receive personalized travel recommendations based on weather conditions
-- [A2A Interface](https://a2aprotocol.ai/docs/)
+- [A2A interface](https://a2aprotocol.ai/docs/) for agentic interoperability
+  - Get a route from Google API for a single origin and destination
+  - Get weather forecasts using OpenWeather at points along the route
+  - Receive travel recommendations based on weather conditions
+- Gradio UI with Google Map integration for demos
 
-## Demo
+### Demo
 
-See a demo under [demo](./demo/) for more details on how it works!
+See a demo [here](./demo/) for more details on how it works.
 
 ## Setup with uv
 
@@ -27,7 +29,7 @@ This project uses [uv](https://github.com/astral-sh/uv) for fast Python package 
 
 1. Clone the repository:
    ```bash
-   git clone <your-repo-url>
+   git clone https://github.com/alexsniffin/weather-travel-agent.git
    cd weather-travel-agent
    ```
 
