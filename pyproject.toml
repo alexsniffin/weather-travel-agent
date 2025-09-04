@@ -1,0 +1,79 @@
+[project]
+name = "weather-travel-agent"
+version = "0.1.0"
+description = "A weather-based travel agent application"
+authors = [
+    {name = "Alexander Sniffin", email = "alexsniffin@gmail.com"}
+]
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "requests",
+    "python-dotenv",
+    "fastapi",
+    "uvicorn[standard]",
+    "gradio",
+    "httpx",
+    "pydantic",
+    "pydantic-settings",
+    "polyline",
+    "googlemaps",
+    "langgraph",
+    "langchain",
+    "langchain-core",
+    "langchain-openai",
+    "a2a-sdk[http-server,telemetry]>=0.3.4",
+    "langchain-core>=0.3.75",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest",
+    "pytest-cov",
+    "ruff",
+    "mypy",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/weather_travel_agent"]
+
+[tool.ruff]
+target-version = "py311"
+line-length = 88
+
+[tool.ruff.lint]
+select = [
+    "E",  # pycodestyle errors
+    "W",  # pycodestyle warnings
+    "F",  # pyflakes
+    "I",  # isort
+    "B",  # flake8-bugbear
+    "C4", # flake8-comprehensions
+]
+ignore = [
+    "E501",  # line too long, handled by black
+    "B008",  # do not perform function calls in argument defaults
+    "C901",  # too complex
+    "UP006", # Use X instead of typing.X
+    "UP035", # typing.X is deprecated
+    "UP045", # Use X | None for type annotations
+]
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+skip-magic-trailing-comma = false
+line-ending = "auto"
+
+[tool.mypy]
+python_version = "3.8"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
