@@ -8,7 +8,7 @@
             "name": "Python Debugger: Weather Travel Agent",
             "type": "debugpy",
             "request": "launch",
-            "module": "src.main",
+            "module": "src.weather_travel_agent.main",
             "cwd": "${workspaceFolder}",
             "env": {
                 "PYTHONPATH": "${workspaceFolder}",
