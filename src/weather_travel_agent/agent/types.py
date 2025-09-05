@@ -7,7 +7,6 @@ class TripState(TypedDict, total=False):
     user_input: str
     origin: str
     destination: str
-    travel_date: Optional[str]
     route: dict[str, Any]
     stops: list[dict[str, Any]]
     forecasts: list[dict[str, Any]]

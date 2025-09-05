@@ -78,12 +78,6 @@ class WeatherTravelExecutor(AgentExecutor):
         state: TripState = {
             "user_input": body.message or "",
         }
-        if body.origin:
-            state["origin"] = body.origin
-        if body.destination:
-            state["destination"] = body.destination
-        if body.travel_date:
-            state["travel_date"] = body.travel_date
 
         # Run the graph
         result: TripState = await self.graph.ainvoke(state)
@@ -108,19 +102,19 @@ def build_agent_card(base_url: str = "http://localhost:8000") -> AgentCard:
         version="1.0.0",
         description="Plans driving itineraries and summarizes weather along the route",
         url=f"{base_url}/a2a",
-        default_input_modes=["text"],
-        default_output_modes=["text"],
+        default_input_modes=["text/plain"],
+        default_output_modes=["text/plain"],
         provider=AgentProvider(
             organization="WeatherTravelCo",
-            url="https://github.com/your-org/weather-travel-agent",
+            url="https://github.com/alexsniffin/weather-travel-agent",
         ),
         skills=[
             AgentSkill(
                 id="itinerary.plan",
                 name="Plan itinerary with weather",
                 description="Given origin & destination, compute route, intermediate cities, and weather",
-                input_modes=["text"],
-                output_modes=["text"],
+                input_modes=["text/plain"],
+                output_modes=["text/plain", "application/json"],
                 tags=["weather", "travel"],
             )
         ],
