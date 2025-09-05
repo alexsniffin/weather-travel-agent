@@ -14,9 +14,15 @@ class GetDirectionsNode:
         """Get driving directions for the route."""
         if not self.gmaps_client:
             self.gmaps_client = googlemaps.Client(key=settings.google_maps_api_key)
+
         origin, destination = state["origin"], state["destination"]
-        directions = self.gmaps_client.directions(origin, destination, mode="driving")
+        try:
+            directions = self.gmaps_client.directions(origin, destination, mode="driving")
+        except googlemaps.exceptions.ApiError as e:
+            return {"need": "I was unable to find the route for the origin and destination, try a different name or locations."}
+
         if not directions:
             return {"need": "No route found. Try different locations."}
+
         route = directions[0]
         return {"route": route}
